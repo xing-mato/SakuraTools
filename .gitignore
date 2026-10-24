@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *.pyo
 
+# 本地临时克隆（用来对照插件市场的校验规则）
+.registry-inspect/
+
 # 打包产物：只作为 Release 附件，不进仓库
 *.zip
 dist/

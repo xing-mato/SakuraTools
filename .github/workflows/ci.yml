@@ -19,7 +19,7 @@ jobs:
           python-version: "3.12"
 
       - name: self-test (44 assertions)
-        run: python sakuratools.files/selftest.py
+        run: python selftest.py
 
       - name: build zip
         run: python build_sakura_files.py

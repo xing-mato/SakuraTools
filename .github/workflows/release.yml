@@ -21,13 +21,13 @@ jobs:
       - name: tag 与 plugin.yaml 版本必须一致
         shell: pwsh
         run: |
-          $version = ((Select-String -Path sakuratools.files/plugin.yaml -Pattern '^version:').Line -split ':', 2)[1].Trim()
+          $version = ((Select-String -Path plugin.yaml -Pattern '^version:').Line -split ':', 2)[1].Trim()
           if ("v$version" -ne "${{ github.ref_name }}") {
             throw "tag ${{ github.ref_name }} 与 plugin.yaml 的 version ($version) 不一致"
           }
 
       - name: self-test
-        run: python sakuratools.files/selftest.py
+        run: python selftest.py
 
       - name: build
         run: python build_sakura_files.py

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.5
+- 仓库结构改为「根目录即插件」：`plugin.yaml`、`plugin.py`、`files_core/`、`selftest.py` 移到仓库根。
+  插件市场（Sakura-Registry）从仓库源码打包，要求根目录有 `plugin.yaml` 且不允许嵌套同名文件。
+- 打包脚本改为按白名单收集根目录文件，zip 内仍是单层 `sakuratools.files/`，应用端安装方式不变。
+
 ## 1.1.4
 - 插件 id 改为自有命名空间 `sakuratools.files`（原 `sakura.files` 借用官方前缀，可能与官方插件冲突）。
 - 源码目录、zip 根目录、发布产物名同步为 `sakuratools.files`。
