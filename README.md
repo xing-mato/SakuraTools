@@ -1,6 +1,6 @@
 # SakuraTools
 
-给 [Sakura](https://github.com/) 桌面宠物加一双“眼睛和手”：让它自己打开你电脑上的文件，而不是等你把内容贴进聊天框。
+给 [Sakura](https://github.com/) 加一双“眼睛和手”：让她自己打开你电脑上的文件，而不是等你把内容贴进聊天框。
 
 - 读文档：docx / xlsx / pptx / odt / ods / odp / pdf / epub / html / rtf / 纯文本与代码（自动识别 UTF-8 / GB18030 / Big5）
 - 看图片：png / jpeg / webp / gif —— 直接进入本轮对话，模型真的能看见画面
