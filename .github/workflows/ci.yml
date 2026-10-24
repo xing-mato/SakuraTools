@@ -9,6 +9,9 @@ jobs:
   selftest:
     # 插件用 ctypes.windll 枚举固定磁盘，只能在 Windows 上跑
     runs-on: windows-latest
+    env:
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: utf-8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

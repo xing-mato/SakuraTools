@@ -12,6 +12,14 @@ import json
 import re
 import shutil
 import sys
+
+# Windows 控制台默认不是 UTF-8（GitHub Actions 上是 cp1252），
+# 直接 print 中文会抛 UnicodeEncodeError。这里显式切成 UTF-8。
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, OSError, ValueError):
+        pass
 import zipfile
 from pathlib import Path
 

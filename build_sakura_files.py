@@ -10,8 +10,16 @@
 from __future__ import annotations
 
 import re
+import sys
 import zipfile
 from pathlib import Path
+
+# Windows 控制台默认不是 UTF-8，print 中文会抛 UnicodeEncodeError。
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, OSError, ValueError):
+        pass
 
 HERE = Path(__file__).resolve().parent
 SOURCE = HERE / "sakuratools.files"

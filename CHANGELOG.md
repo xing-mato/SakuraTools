@@ -4,6 +4,7 @@
 - 插件 id 改为自有命名空间 `sakuratools.files`（原 `sakura.files` 借用官方前缀，可能与官方插件冲突）。
 - 源码目录、zip 根目录、发布产物名同步为 `sakuratools.files`。
 - **升级需先卸载旧 id 插件再安装**；插件设置会重置。
+- 自检与打包脚本会把 stdout 切到 UTF-8，并在 CI 里设置 `PYTHONUTF8=1`；此前在 cp1252 控制台直接 `UnicodeEncodeError`。
 
 ## 1.1.3
 - 修复：工具注册分组从 `files` 改为 `plugin`。此前工具注册成功但不在 Agent 的可见分组里，模型看不到任何文件工具。
