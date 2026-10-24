@@ -1,0 +1,44 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: tag 与 plugin.yaml 版本必须一致
+        shell: pwsh
+        run: |
+          $version = ((Select-String -Path sakuratools.files/plugin.yaml -Pattern '^version:').Line -split ':', 2)[1].Trim()
+          if ("v$version" -ne "${{ github.ref_name }}") {
+            throw "tag ${{ github.ref_name }} 与 plugin.yaml 的 version ($version) 不一致"
+          }
+
+      - name: self-test
+        run: python sakuratools.files/selftest.py
+
+      - name: build
+        run: python build_sakura_files.py
+
+      - name: SHA256SUMS
+        shell: pwsh
+        run: |
+          Get-ChildItem sakuratools.files-*.zip | ForEach-Object {
+            $hash = (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower()
+            "$hash  $($_.Name)"
+          } | Set-Content -Encoding ascii SHA256SUMS
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            sakuratools.files-*.zip
+            SHA256SUMS

@@ -1,0 +1,18 @@
+api: 4
+id: sakuratools.files
+name: SakuraTools
+author: mato
+description: 浏览、检索并读取本机文件（文本、Office、PDF、EPUB、图片）；默认为只读，可开启完全权限写入。
+version: 1.1.4
+entry: plugin:FilesPlugin
+enabled: true
+provides: []
+requires:
+  - sakura.host.tools
+  - sakura.host.logging
+  - sakura.host.settings
+  - sakura.host.artifacts
+presentation:
+  kind: extension
+  category: tools
+  icon: folder

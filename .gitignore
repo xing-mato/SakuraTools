@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# 打包产物：只作为 Release 附件，不进仓库
+*.zip
+dist/
+
+# 自检临时目录（selftest.py 自动创建并清理）
+.selftest-tmp/
+
+# 对 Sakura 内置插件的补丁：里面含应用自带代码，默认不随插件发布
+patches/
+
+# 允许 CI 配置
+!.github/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

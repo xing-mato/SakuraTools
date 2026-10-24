@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  selftest:
+    # 插件用 ctypes.windll 枚举固定磁盘，只能在 Windows 上跑
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: self-test (44 assertions)
+        run: python sakuratools.files/selftest.py
+
+      - name: build zip
+        run: python build_sakura_files.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sakuratools.files-zip
+          path: sakuratools.files-*.zip
+          if-no-files-found: error

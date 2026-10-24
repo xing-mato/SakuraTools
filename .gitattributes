@@ -1,0 +1,16 @@
+# 统一换行，避免 Windows 上用 CRLF 提交导致 diff 噪声 / zip 内容不一致
+* text=auto
+
+*.py   text eol=lf
+*.md   text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.json text eol=lf
+
+# 二进制不要做换行转换
+*.zip  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.char binary
